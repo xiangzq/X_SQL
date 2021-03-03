@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'X_SQL_Example' do
+  pod 'X_SQL', :path => '../'
+
+  target 'X_SQL_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
