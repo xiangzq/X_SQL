@@ -1,0 +1,25 @@
+PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - X_SQL (0.1.0):
+    - FMDB
+
+DEPENDENCIES:
+  - X_SQL (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - FMDB
+
+EXTERNAL SOURCES:
+  X_SQL:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  X_SQL: c504903a8957948605b2532384688140be773151
+
+PODFILE CHECKSUM: 9b972ace5980d2ef66456eacde869df69c093351
+
+COCOAPODS: 1.10.1

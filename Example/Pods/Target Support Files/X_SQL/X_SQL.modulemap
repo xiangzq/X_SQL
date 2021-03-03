@@ -1,0 +1,6 @@
+framework module X_SQL {
+  umbrella header "X_SQL-umbrella.h"
+
+  export *
+  module * { export * }
+}

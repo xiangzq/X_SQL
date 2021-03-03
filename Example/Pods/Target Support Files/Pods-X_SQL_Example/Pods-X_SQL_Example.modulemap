@@ -1,0 +1,6 @@
+framework module Pods_X_SQL_Example {
+  umbrella header "Pods-X_SQL_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

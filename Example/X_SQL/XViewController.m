@@ -7,7 +7,7 @@
 //
 
 #import "XViewController.h"
-
+#import <X_SQL.h>
 @interface XViewController ()
 
 @end
@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [X_SQL setSqlName:nil];
 }
 
 - (void)didReceiveMemoryWarning

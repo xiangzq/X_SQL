@@ -1,0 +1,27 @@
+{
+  "name": "X_SQL",
+  "version": "0.1.0",
+  "summary": "通用数据库语句封装",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/xiangzq/X_SQL",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "xiangzq": "xiangac1992@163.com"
+  },
+  "source": {
+    "git": "https://github.com/xiangzq/X_SQL.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "X_SQL/Classes/**/*",
+  "dependencies": {
+    "FMDB": [
+
+    ]
+  }
+}
