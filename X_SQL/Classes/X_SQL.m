@@ -15,15 +15,12 @@
 @implementation X_SQL
 
 /// 设置数据库
-+ (void) setSqlName:(NSString * _Nullable) name {
++ (X_SQL *) setSqlName:(NSString * _Nullable) name {
     if (name != nil && ![name isEqualToString:@""]) {
         [X_SQL instance].sqlName = name;
     }
     [X_SQL instance].dbQueue = [[FMDatabaseQueue alloc] initWithPath:[X_SQL aigoPath]];
-}
-
-+ (FMDatabaseQueue *) dbQueue {
-    return [X_SQL instance].dbQueue;
+    return [X_SQL instance];
 }
 
 //MARK: 初始化
