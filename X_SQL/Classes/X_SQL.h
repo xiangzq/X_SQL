@@ -9,6 +9,18 @@
 #import <FMDB/FMDB.h>
 NS_ASSUME_NONNULL_BEGIN
 
+//MARK: object参数介绍
+/**
+ 以下方法中出现的object字段类型只能传NSObject对象，或者NSDictionary
+ 如果使用NSObject对象，请参照：
+ A * a = [A new];
+ a.m = m;
+ a.n = n;
+ [a setArgumentPropertyName:@"m,n"];
+ 如果使用NSDictionary,请参照：
+ NSDictionary *a = @{@"m":m,@"n":n};
+ */
+
 @interface X_SQL : NSObject
 @property (nonatomic,strong,readonly) FMDatabaseQueue *dbQueue;
 /// 设置数据库名称，默认请传nil
@@ -50,13 +62,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *插入数据
  *@param tableName 表名
- *@param keys  字段名数组
- *@param values 字段值数组
+ *@param object  该字段介绍见顶部代码
  *@param db 数据库对象
  */
-+ (BOOL) insertTableName:(NSString *)tableName
-                    Keys:(NSArray<NSString *> *) keys
-                  values:(NSArray<id> *) values
++ (BOOL) insertTableName:(NSString *) tableName
+                  object:(id) object
                       db:(FMDatabase *) db;
 
 /**
@@ -64,13 +74,13 @@ NS_ASSUME_NONNULL_BEGIN
  *@param tableName 表名
  *@param field  条件字段名
  *@param value  条件字段值
- *@param keyValue 需要更新的字段
+ *@param object  该字段介绍见顶部代码
  *@param db 数据库对象
  */
-+ (BOOL) updateTableName:(NSString *)tableName
++ (BOOL) updateTableName:(NSString *) tableName
                    field:(NSString *) field
                    value:(id) value
-               KeyValue:(NSDictionary<NSString *,id> *) keyValue
+                  object:(id) object
                       db:(FMDatabase *) db;
 
 //MARK: 查
@@ -102,21 +112,21 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *通过多个参数查询表数据的数量
  *@param tableName 表名
- *@param keyValue  字段名:字段值
+ *@param object  该字段介绍见顶部代码
  */
 + (NSUInteger) getRecordCountByTable:(NSString *) tableName
-                            keyValue:(NSDictionary<NSString *,id> *) keyValue;
+                              object:(id) object;
 
 
 
 /**
  *查询表数据（多参数查询为AND）
  *@param tableName 表名
- *@param keyValue 查询参数字段
+ *@param object  该字段介绍见顶部代码
  *@param db 数据库对象
  */
 + (FMResultSet *) queryTableName:(NSString *) tableName
-                        keyValue:(NSDictionary *) keyValue
+                          object:(id) object
                               db:(FMDatabase *) db;
 @end
 

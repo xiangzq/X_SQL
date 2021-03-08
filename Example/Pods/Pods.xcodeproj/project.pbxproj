@@ -22,6 +22,8 @@
 		6C58288FB8A294C16676BF03E51AA34D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D7675B55C1BE46C7D3D375F223CE119D /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6D4CBF92CDCBCE42EBCC1AD171543B9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDADFEACEDBB2F415EA13D48EDC2236 /* Foundation.framework */; };
 		7394E123FBD9832A5D6FD726D5D9470C /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D7735B8EBC221831E4D2A62D56D34CD4 /* FMDatabaseQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		740973EA25F5FEAB0031CB2C /* NSObject+XProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 740973E825F5FEAB0031CB2C /* NSObject+XProperty.h */; };
+		740973EB25F5FEAB0031CB2C /* NSObject+XProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 740973E925F5FEAB0031CB2C /* NSObject+XProperty.m */; };
 		7D4E0D91FE60904C9FB50F6D447B8A30 /* FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC7FCB163982668F35644CC9927F08C /* FMDB-dummy.m */; };
 		7FDC8C0859BB87122359F934B48E6090 /* X_SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EBE315D498CF4B58A7F95EC37E492F /* X_SQL.m */; };
 		88635ABF2ECC971F463DF8FF5110025D /* X_SQL-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFAEBD688F51BA928A2FD63EFE1214 /* X_SQL-dummy.m */; };
@@ -83,6 +85,8 @@
 		5578B1407CA30A1C962B5BF1C25D303B /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
 		66EBE315D498CF4B58A7F95EC37E492F /* X_SQL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = X_SQL.m; path = X_SQL/Classes/X_SQL.m; sourceTree = "<group>"; };
 		705F4BCE759B122184C938337D8DFBEB /* Pods-X_SQL_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-X_SQL_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		740973E825F5FEAB0031CB2C /* NSObject+XProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+XProperty.h"; path = "X_SQL/Classes/NSObject+XProperty.h"; sourceTree = "<group>"; };
+		740973E925F5FEAB0031CB2C /* NSObject+XProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+XProperty.m"; path = "X_SQL/Classes/NSObject+XProperty.m"; sourceTree = "<group>"; };
 		75C0A343B4DC5E04B3A7102EDF7C416D /* X_SQL-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "X_SQL-umbrella.h"; sourceTree = "<group>"; };
 		79F76E7A43841DE8560E09C80DCF5257 /* Pods-X_SQL_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-X_SQL_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7A42B1AB47FD5E7FF333B2196E9A19E7 /* Pods-X_SQL_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-X_SQL_Example-Info.plist"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			children = (
 				8DE163D5FBC4F0E48A15BC2C3A6B956B /* X_SQL.h */,
 				66EBE315D498CF4B58A7F95EC37E492F /* X_SQL.m */,
+				740973E825F5FEAB0031CB2C /* NSObject+XProperty.h */,
+				740973E925F5FEAB0031CB2C /* NSObject+XProperty.m */,
 				3D45472554385167218D8951C847DEB8 /* Pod */,
 				C47DA7BB261F0E4691100F2702CFD3A5 /* Support Files */,
 			);
@@ -354,6 +360,7 @@
 			files = (
 				D2DA4642872C2A2DBD47A69EC2C6503A /* X_SQL.h in Headers */,
 				F43112BDF22BD22B30713A27CD50A6CB /* X_SQL-umbrella.h in Headers */,
+				740973EA25F5FEAB0031CB2C /* NSObject+XProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740973EB25F5FEAB0031CB2C /* NSObject+XProperty.m in Sources */,
 				7FDC8C0859BB87122359F934B48E6090 /* X_SQL.m in Sources */,
 				88635ABF2ECC971F463DF8FF5110025D /* X_SQL-dummy.m in Sources */,
 			);

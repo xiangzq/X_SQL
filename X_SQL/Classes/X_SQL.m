@@ -6,6 +6,7 @@
 //
 
 #import "X_SQL.h"
+#import "NSObject+XProperty.h"
 
 @interface X_SQL ()
 @property (nonatomic,strong) FMDatabaseQueue *dbQueue;
@@ -79,6 +80,18 @@
     return results;
 }
 
++ (NSDictionary<NSString *,id> *) object:(id) object {
+    NSDictionary *keyValue;
+    if ([object isKindOfClass:[NSObject class]]) {
+        keyValue = [object argumentPropertyInfo];
+    } else if ([object isKindOfClass:[NSDictionary class]]) {
+        keyValue = [object copy];
+    } else {
+        NSAssert(false, @"传入的类型不正确，只能传NSObject对象或者NSDictionary字典");
+    }
+    return keyValue;
+}
+
 //MARK: 增
 
 /// 新增表字段
@@ -97,16 +110,16 @@
 
 /// 插入数据
 + (BOOL) insertTableName:(NSString *) tableName
-                    Keys:(NSArray<NSString *> *) keys
-                  values:(NSArray<id> *) values
+                  object:(id) object
                       db:(FMDatabase *) db {
-    NSMutableArray *value_marks = [NSMutableArray arrayWithCapacity:values.count];
-    for (int i = 0; i < values.count; i ++) [value_marks addObject:@"?"];
+    NSDictionary *keyValue = [self object:object];
+    NSMutableArray *value_marks = [NSMutableArray arrayWithCapacity:keyValue.allKeys.count];
+    for (int i = 0; i < keyValue.allKeys.count; i ++) [value_marks addObject:@"?"];
     NSString *value_sql = [value_marks componentsJoinedByString:@","];
-    NSString *key_sql = [keys componentsJoinedByString:@","];
+    NSString *key_sql = [keyValue.allKeys componentsJoinedByString:@","];
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@(%@) values(%@)",tableName,key_sql,value_sql];
-    BOOL success = [db executeUpdate:sql withArgumentsInArray:values];
-    NSLog(@"表【%@】新增数据【%@】记录【%@】",tableName,keys ,success ? @"成功" : @"失败");
+    BOOL success = [db executeUpdate:sql withArgumentsInArray:keyValue.allValues];
+    NSLog(@"表【%@】新增数据【%@】记录【%@】",tableName,keyValue.allKeys ,success ? @"成功" : @"失败");
     return success;
 }
 
@@ -131,8 +144,9 @@
 + (BOOL) updateTableName:(NSString *) tableName
                    field:(NSString *) field
                    value:(id) value
-               KeyValue:(NSDictionary<NSString *,id> *) keyValue
+                  object:(id) object
                       db:(FMDatabase *) db {
+    NSDictionary *keyValue = [self object:object];
     NSMutableString *param = @"".mutableCopy;
     [keyValue.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [param appendFormat:@" %@ = ? %@",obj,(idx == keyValue.allKeys.count - 1) ?  @"" : @","];
@@ -165,12 +179,13 @@
     if (key2 != nil && ![key2  isEqualToString: @""] && value2 != nil && ![value2 isEqual:@""]) {
         [keyValue setObject:value2 forKey:key2];
     }
-    return [self getRecordCountByTable:tableName keyValue:keyValue];
+    return [self getRecordCountByTable:tableName object:keyValue];
 }
 
 /// 通过多个参数查询表数据的数量
 + (NSUInteger) getRecordCountByTable:(NSString *) tableName
-                            keyValue:(NSDictionary<NSString *,id> *) keyValue {
+                              object:(id) object {
+    NSDictionary *keyValue = [self object:object];
     __block NSUInteger count = 0;
     [[X_SQL instance].dbQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
@@ -189,8 +204,9 @@
 
 /// 查询表数据（多参数查询为AND）
 + (FMResultSet *) queryTableName:(NSString *) tableName
-                        keyValue:(NSDictionary *) keyValue
+                          object:(id) object
                               db:(FMDatabase *) db {
+    NSDictionary *keyValue = [self object:object];
     NSMutableString *param = @"".mutableCopy;
     [keyValue.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [param appendFormat:@" %@ = ? %@",obj,(idx == keyValue.allKeys.count - 1) ?  @"" : @"AND"];
