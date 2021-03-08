@@ -22,6 +22,10 @@
     [X_SQL instance].dbQueue = [[FMDatabaseQueue alloc] initWithPath:[X_SQL aigoPath]];
 }
 
++ (FMDatabaseQueue *) dbQueue {
+    return [X_SQL instance].dbQueue;
+}
+
 //MARK: 初始化
 + (instancetype) instance {
     static X_SQL *until = nil;

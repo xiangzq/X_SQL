@@ -11,13 +11,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface X_SQL : NSObject
 
-@property (nonatomic,strong,readonly) FMDatabaseQueue *dbQueue;
-
 /// 设置数据库名称，默认请传nil
 + (void) setSqlName:(NSString * _Nullable ) name;
 
 /// 通过sql文件名获取所有sql语句
 + (NSArray<NSString *> *) getSqlWithName:(NSString *) name;
+
+/// 数据库对象
++ (FMDatabaseQueue *) dbQueue;
 
 //MARK: 增
 
