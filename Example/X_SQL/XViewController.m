@@ -19,7 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [X_SQL setSqlName:nil];
-    
+    [X_SQL queryTableName:@"" object:@{@"1":@"a"} db:nil];
 }
 
 - (void)didReceiveMemoryWarning

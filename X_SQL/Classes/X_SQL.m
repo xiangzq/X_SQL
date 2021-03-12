@@ -82,7 +82,7 @@
 
 + (NSDictionary<NSString *,id> *) object:(id) object {
     NSDictionary *keyValue;
-    if ([object isKindOfClass:[NSObject class]]) {
+    if ([object isMemberOfClass:[NSObject class]]) {
         keyValue = [object argumentPropertyInfo];
     } else if ([object isKindOfClass:[NSDictionary class]]) {
         keyValue = [object copy];
