@@ -82,10 +82,10 @@
 
 + (NSDictionary<NSString *,id> *) object:(id) object {
     NSDictionary *keyValue;
-    if ([object isMemberOfClass:[NSObject class]]) {
-        keyValue = [object argumentPropertyInfo];
-    } else if ([object isKindOfClass:[NSDictionary class]]) {
+    if ([object isKindOfClass:[NSDictionary class]]) {
         keyValue = [object copy];
+    } else if ([object isKindOfClass:[NSObject class]]) {
+        keyValue = [object argumentPropertyInfo];
     } else {
         NSAssert(false, @"传入的类型不正确，只能传NSObject对象或者NSDictionary字典");
     }

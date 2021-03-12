@@ -11,3 +11,7 @@
 @interface XViewController : UIViewController
 
 @end
+
+@interface A : NSObject
+
+@end
